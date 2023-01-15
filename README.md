@@ -1,6 +1,6 @@
 Microsoft website parser with web interface for received results.
 
-Applied technologies: Python, Selenium, PostgreSQL, Django, Booststrap, JavaScript.
+Applied technologies: Python, Selenium, PostgreSQL, Django, HTML, CSS, JavaScript.
 
 
 "parser_script.py" works with Selenium and initially collects all information about application cards of the "Business" category into an HTML file. 
