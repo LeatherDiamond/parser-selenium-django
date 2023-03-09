@@ -60,4 +60,23 @@ The parser architecture described above was chosen because the website is dynami
   
   ![connection to the server](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/PostgreSQL%20connection%20to%20the%20server.png)
   
-  * 
+  * Create the DB which will be used for the project (it can be done with desktop application "pgAdmin4" or with interactive PostgreSQL terminal "SQL Shell". Below will be instruction how to do it with SQL Shell):
+  > ***NOTE:*** During Postgres installation, a "postgres" user (PostgreSQL administrator) was created in the OS automatically. This user should be used to perform administrative tasks. Password to "postgres" user was provided earlier when "pgAdmin4" application was launched first time after installation.
+  
+   1. Launch SQL Shell (psql) (interactive terminal PostgreSQL) and provide data to connect the default DB that was created automatically:
+   
+  ![connection to default DB](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/SQL%20Shell%20connection%20to%20BD.png)
+  
+   2. Create the DB for the project:
+   ```
+   CREATE DATABASE database_name;
+   ```
+   3. Create a DB user:
+   ```
+   CREATE username USER WITH PASSWORD 'password';
+   ```
+   4. Give the created user superuser rights:
+   ```
+   ALTER ROLE username SUPERUSER;
+   ```
+   ![DB ready for use](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/DB%20and%20user%20created%20and%20ready.png)
