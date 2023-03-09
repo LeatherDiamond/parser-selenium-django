@@ -27,6 +27,7 @@ The parser architecture described above was chosen because the website is dynami
  
  # How to start? <sub>(Installation and Launch)</sub>
  
+ ### ***Installation***
  **1. Clone current repository:**
  ```
  git clone https://github.com/LeatherDiamond/parser_selenium-django.git
@@ -37,7 +38,14 @@ The parser architecture described above was chosen because the website is dynami
  pip install -r requirements.txt
  ```
  
- **3. Create PostgreSQL database on your local machine:**
+ 
+ **3.Add Web Driver to the directory with the project.**
+ 
+  > In parser source code Selenium is used with Chrome browser. To launch script with selenium you should download correct version of Web Driver (Chromedriver). It depends on what version of Chrome you are using on your local machine and can be downloaded by the following [link](https://chromedriver.chromium.org/).
+  >
+  > * ***Chromedriver should be located in the folder "chromedriver" in the main directory of the project (/parser_selenium-django/chromedriver).***
+ 
+ **4. Create PostgreSQL database on your local machine:**
  
  * Familiarize with the information on the [website](https://www.postgresql.org/download/) (running the database on different operating systems) and if necessary         download the PostgreSQL installer for your operating system or follow the steps described on the website to launch the database.
   
@@ -80,3 +88,67 @@ The parser architecture described above was chosen because the website is dynami
    ALTER ROLE username SUPERUSER;
    ```
    ![DB ready for use](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/DB%20and%20user%20created%20and%20ready.png)
+   
+  **5. Provide mandatory data in ***settings.py*** and ***parser_script.py*** files:**
+  
+   - [x] settings.py:
+   
+   - Django SECRET_KEY;
+   - DATABASES:
+   ```
+   DATABASES = {  
+    'default': {  
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  
+        'NAME': 'database_name',  
+        'USER': 'user_name',  
+        'PASSWORD': 'user_password',  
+        'HOST': '127.0.0.1',  
+        'PORT': '5432'
+        }  
+}
+   ```
+
+   - [x] parser_script.py:
+
+   - line 22 ***"executable_path"*** - Path to your Web Driver;
+   - line 32 ***"local_settings.html_save"*** - Should be replaced with path where your HTML file with parsed data will be saved ("/parser_selenium-django/source-page.html");
+   - line 58 ***local_settings.txt_save*** - Should be replaced with path where your TXT file with extracted product card IDs will be saved ("/parser_selenium-django/items-id.txt")
+   - line 100 ***local_settings.json_save*** - Should be replaced with path where your JSON file with final parsing results will be saved.
+   > IMPORTANT: JSON file with results should be located in ***"fixtures"*** folder for further import in database ***(/parser_selenium-django/src/result_view/fixtures/parsing_results.json)***
+ 
+ **6. Apply all migrations:***
+ ```
+ python manage.py migrate
+ ```
+ 
+ ### ***Launch***
+  
+  ###### Script launch
+  > Script is working in 3 steps:
+  > * ***Step 1*** - Collection of product cards data in "Business" category website page with Selenium and saving results to HTML;
+  > * ***Step 2*** - Collection of item IDs from HTML page and saving them to TXT file;
+  > * ***Step 3*** - Substituion of collected IDs to specified URL, following it, extracting data and saving results to JSON file;
+  >
+  > To launch ***Step 1***, **parser_script.py** should have the following structure:
+  > * ***Uncommented lines*** - 2-43, 105, 106, 111, 112;
+  > * ***Other lines should be commented (Ctrl + /)***
+  >
+  > To launch ***Step 2***, **parser_script.py** should have the following structure:
+  > * ***Uncommented lines*** - 2-16, 46-62, 105, 107, 111, 112;
+  > * ***Other lines should be commented (Ctrl + /)***
+  >
+  > To launch ***Step 3***, **parser_script.py** should have the following structure:
+  > * ***Uncommented lines*** - 2-16, 65-105, 108, 111, 112;
+  > * ***Other lines should be commented (Ctrl + /)***
+  
+  
+  ###### Web interface launch
+  > * Import collected on ***Step 3*** data into the previously created database:
+  ```
+  python manage.py loaddata parsing_results.json
+  ```
+  > * Launch the Django server:
+  ```
+  python manage.py runserver
+  ```
+  
