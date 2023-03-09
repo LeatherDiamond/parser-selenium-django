@@ -48,3 +48,16 @@ The parser architecture described above was chosen because the website is dynami
   * Download PostgreSQL installer from the [website](https://www.postgresql.org/download/);
   * Install all the components from the list:
   
+  ![components installation](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/PostgreSQL%20components%20installation.png)
+  
+  * After the isnstallation is finished, laucn Stack Builder at exit and install Database Drivers in accordance with bitness of your Windows system.
+  
+  ![drivers installation](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/PostgreSQL%20drivers%20installation.png)
+  
+  * Launch pgAdmin4 application and set a master password for the application.
+  
+  * Click "PostgreSQL" and insert your password in appeared window to connect the DB server.
+  
+  ![connection to the server](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/PostgreSQL%20connection%20to%20the%20server.png)
+  
+  * 
