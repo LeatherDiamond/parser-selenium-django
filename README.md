@@ -84,7 +84,8 @@ The parser architecture described above was chosen because the website is dynami
   > * Create the DB which will be used for the project (it can be done with desktop application "pgAdmin4" or with interactive PostgreSQL terminal "SQL Shell".
   > ***Below will be instruction how to do it with SQL Shell):***
   > 
-  > ***NOTE:*** During Postgres installation, a "postgres" user (PostgreSQL administrator) was created in the OS automatically. This user should be used to perform       > administrative tasks. Password to "postgres" user was provided earlier when "pgAdmin4" application was launched first time after installation.
+  > ***NOTE:*** During Postgres installation, a "postgres" user (PostgreSQL administrator) was created in the OS automatically. This user should be used to perform
+  > administrative tasks. Password to "postgres" user was provided earlier when "pgAdmin4" application was launched first time after installation.
   >
   > 1. Launch SQL Shell (psql) (interactive terminal PostgreSQL) and provide data to connect the default DB that was created automatically:
   > 
@@ -98,7 +99,7 @@ The parser architecture described above was chosen because the website is dynami
   > ```
   > CREATE username USER WITH PASSWORD 'password';
   > ```
-  > 4. Give the created user superuser rights:
+  > 4. Give the created user "superuser" rights:
   > ```
   > ALTER ROLE username SUPERUSER;
   > ```
@@ -127,8 +128,8 @@ The parser architecture described above was chosen because the website is dynami
 
    - line 22 ***"executable_path"*** - Path to your Web Driver;
    - line 32 ***"local_settings.html_save"*** - Should be replaced with path where your HTML file with parsed data will be saved ("/parser_selenium-django/source-page.html");
-   - line 58 ***local_settings.txt_save*** - Should be replaced with path where your TXT file with extracted product card IDs will be saved ("/parser_selenium-django/items-id.txt")
-   - line 100 ***local_settings.json_save*** - Should be replaced with path where your JSON file with final parsing results will be saved.
+   - line 58 ***"local_settings.txt_save"*** - Should be replaced with path where your TXT file with extracted product card IDs will be saved ("/parser_selenium-django/items-id.txt")
+   - line 100 ***"local_settings.json_save"*** - Should be replaced with path where your JSON file with final parsing results will be saved.
    > IMPORTANT: JSON file with results should be located in ***"fixtures"*** folder for further import in database ***(/parser_selenium-django/src/result_view/fixtures/parsing_results.json)***
  
  **6. Apply all migrations:***
