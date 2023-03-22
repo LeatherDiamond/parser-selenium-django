@@ -97,7 +97,7 @@ The parser architecture described above was chosen because the website is dynami
   > ```
   > 3. Create a DB user:
   > ```
-  > CREATE username USER WITH PASSWORD 'password';
+  > CREATE USER username WITH PASSWORD 'password';
   > ```
   > 4. Give the created user "superuser" rights:
   > ```
