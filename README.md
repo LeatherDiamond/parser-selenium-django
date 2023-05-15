@@ -31,7 +31,14 @@ Collected information is recorded to a JSON file and imported into the database.
 Web interface for received results allows to view data in a convenient format, apply filters, use searchbar.
 The parser architecture described above was chosen because the website is dynamic and the content required for collection is given back by website as a JSON file, from which content is extracted.
 
-***Applied technologies:*** *Python, Selenium, PostgreSQL, Django, HTML, CSS, JavaScript.*
+***Applied technologies:*** 
+- *Python (>=3.9.7),* 
+- *Selenium (>=4.7.2),* 
+- *PostgreSQL (==15.2),*
+- *Django (>=4.1.5),*
+- *HTML,* 
+- *CSS,* 
+- *JavaScript.*
 
 ###### NOTES:
  > *You can familiarize with deployed version of the project by the following [link](https://almond.pythonanywhere.com/parsing_results).*
@@ -46,19 +53,26 @@ The parser architecture described above was chosen because the website is dynami
  git clone https://github.com/LeatherDiamond/parser_selenium-django.git
  ```
  
- **2. Install all requirements from "requirements.txt":**
+ **2. Create and activate virtual environment on your machine:**
+```
+
+python -m venv environment_name
+.\env\Scripts\activate
+```
+
+ **3. Install all requirements from "requirements.txt":**
  ```
  pip install -r requirements.txt
  ```
  
  
- **3. Add Web Driver to the directory with the project.**
+ **4. Add Web Driver to the directory with the project.**
  
   > In parser source code Selenium is used with Chrome browser. To launch script with selenium you should download correct version of Web Driver (Chromedriver). It depends on what version of Chrome you are using on your local machine and can be downloaded by the following [link](https://chromedriver.chromium.org/).
   >
   > * ***Chromedriver should be located in the folder "chromedriver" in the main directory of the project (/parser_selenium-django/chromedriver/chromedriver.exe).***
  
- **4. Create PostgreSQL database on your local machine:**
+ **5. Create PostgreSQL database on your local machine:**
  
  * Familiarize with the information on the [website](https://www.postgresql.org/download/) (running the database on different operating systems) and if necessary         download the PostgreSQL installer for your operating system or follow the steps described on the website to launch the database.
   
@@ -105,7 +119,7 @@ The parser architecture described above was chosen because the website is dynami
   > ```
   > ![DB ready for use](https://github.com/LeatherDiamond/parser_selenium-django/blob/master/README%20images/DB%20and%20user%20created%20and%20ready.png)
    
-  **5. Provide mandatory data in ***settings.py*** and ***parser_script.py*** files:**
+  **6. Provide mandatory data in ***settings.py*** and ***parser_script.py*** files:**
   
    - [x] settings.py:
    
@@ -132,7 +146,7 @@ The parser architecture described above was chosen because the website is dynami
    - line 100 ***"local_settings.json_save"*** - Should be replaced with path where your JSON file with final parsing results will be saved.
    > IMPORTANT: JSON file with results should be located in ***"fixtures"*** folder for further import in database ***(/parser_selenium-django/src/result_view/fixtures/parsing_results.json)***
  
- **6. Apply all migrations:***
+ **7. Apply all migrations:***
  ```
  python manage.py migrate
  ```
